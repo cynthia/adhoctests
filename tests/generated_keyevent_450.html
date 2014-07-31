@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Generated Key Events</title>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+	
+<script src="../resources/testharness.js"></script>
+
+<body>
+<script>
+	var l = document.addEventListener('keydown', function(e) {
+		test(function() {
+    		assert_equals(e.keyCode, 450);
+    		if (e.keyCode == 450) {
+    			document.removeEventListener('keydown', l);
+	    		done();
+    		}
+    	}, "Generated KeyboardEvent with arbitrary keycode works.");
+	}, false);
+
+
+var e = new KeyboardEvent("keydown", {bubbles : true, cancelable : true, keyCode: 450});
+document.dispatchEvent(e);
+
+</script>
+<div id="keyTarget"></div>
+
+</body>
+</html>
